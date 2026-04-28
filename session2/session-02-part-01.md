@@ -29,18 +29,21 @@ git restore --source origin/main --staged --worktree session2
 git clean -fd session2
 ```
 
-2. Open the `session2` folder in Visual Studio Code.
-3. Create and activate your virtual environment:
+2. Open the `session2` folder in Visual Studio Code and in terminal.
+
+```
+cd session2
+```
+
+3. Create `python3 -m venv .venv` and activate your virtual environment:
 
 ```bash
-python3 -m venv .venv
 source .venv/bin/activate
 ```
 
 Windows PowerShell:
 
 ```powershell
-python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
