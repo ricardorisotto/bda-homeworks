@@ -13,8 +13,24 @@ You will:
 
 Before starting:
 
-1. Open the `session2` folder in Visual Studio Code.
-2. Create and activate your virtual environment:
+1. Update your local repository (do this each time before you start, since new updates may be available).
+
+Option A (full repository update, recommended):
+
+```bash
+git pull origin main
+```
+
+Option B (refresh only Session 2 material, useful when you want to update this folder only):
+
+```bash
+git fetch origin
+git restore --source origin/main --staged --worktree session2
+git clean -fd session2
+```
+
+2. Open the `session2` folder in Visual Studio Code.
+3. Create and activate your virtual environment:
 
 ```bash
 python3 -m venv .venv
@@ -28,7 +44,7 @@ python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-3. Install requirements:
+4. Install requirements:
 
 ```bash
 pip install -r requirements.txt
@@ -41,7 +57,7 @@ Go to Google AI Studio and create an API key:
 - https://aistudio.google.com/app/api-keys
 - Add a name (or keep default) and choose `Default Gemini Project`.
 - Create a key and keep it private.
-- Copy the API key e.g. `AIza...`.
+- Copy the API key (for example, `AIza...`).
 
 #### 4. Set API key in terminal
 
