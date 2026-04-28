@@ -18,9 +18,30 @@ Before starting:
 
 1. Open the `session2` folder in Visual Studio Code.
 2. Create and activate your virtual environment:
-3. Examine the dependencies and install necessary requirements.
-4. Create your exercise files inside the `session2/solutions` folder.
-5. 
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+3. Install requirements:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Create your exercise file inside `session2/solutions`, for example:
+
+```txt
+session2/solutions/exercise-02-01.py
+```
 #### 3. Basics you should know
 
 The `csv.DictReader(file)` reads each CSV row as a `dict` (dictionary). Keys come from the header row (column names). Values are still strings, so numeric conversion is manual when needed.
@@ -73,7 +94,8 @@ hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir .
 
 Expected result: `movies.csv` appears in your current folder.
 
-Run your script from the `bda` root folder. You can then load the file using `open("session2/movies.csv", "r")`, or move the file into the same folder as your script.
+Run your scripts from the `session2` folder, so `open("movies.csv", "r")` works directly.
+If you run from the `bda` root folder instead, use `open("session2/movies.csv", "r")`.
 
 Let's create our first script. File: `session2/solutions/exercise-02-01.py`
 
@@ -237,10 +259,16 @@ Use the `Birkbeck/movies` dataset from Hugging Face.
 6. In one short comment, explain one benefit of `DictReader` over `csv.reader`.
 7. What are the time and space complexities of your script(s)?
 
-Use the `Birkbeck/movies_incomplete` dataset from Hugging Face. You might need to `pull` it.
+Use the `Birkbeck/movies_incomplete` dataset from Hugging Face.
+Download it into a separate folder so it does not overwrite `movies.csv`:
+
+```bash
+mkdir -p data/movies_incomplete
+hf download Birkbeck/movies_incomplete movies.csv --repo-type dataset --local-dir data/movies_incomplete
+```
 
 1. Find the missing data point and print row and column.
-2. Find the average of `votes` from `movies_incomplete.csv`. Why does the naive script fail? How can you fix it?
+2. Find the average of `votes` from `data/movies_incomplete/movies.csv`. Why does the naive script fail? How can you fix it?
 
 #### 10. Quiz
 

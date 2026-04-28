@@ -26,8 +26,13 @@ Option B (refresh only Session 2 material, useful when you want to update this f
 ```bash
 git fetch origin
 git restore --source origin/main --staged --worktree session2
-git clean -fd session2
+git clean -fdn session2
+# Review the preview first, then run:
+git clean -fd -e session2/solutions session2
 ```
+
+> [!WARNING]
+> `git clean` deletes untracked files. Keep your own work inside `session2/solutions` and use the command above with `-e session2/solutions` to protect it.
 
 2. Open the `session2` folder in Visual Studio Code and in terminal.
 
