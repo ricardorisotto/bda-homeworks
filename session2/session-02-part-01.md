@@ -13,7 +13,7 @@ You will:
 
 Before starting:
 
-1. Update your local repository (do this each time before you start, since new updates may be available).
+1. In Visual Studio Code terminal, update your local repository (do this each time before you start, since new updates may be available).
 
 Option A (full repository update, recommended):
 
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 Go to Google AI Studio and create an API key:
 
 - https://aistudio.google.com/app/api-keys
-- Add a name (or keep default) and choose `Default Gemini Project`.
+- Add a name (or keep the default) and choose `Default Gemini Project`.
 - Create a key and keep it private.
 - Copy the API key (for example, `AIza...`).
 
@@ -89,21 +89,22 @@ Google AI Studio is free, but it has usage limits (typically 5-15 requests per m
 
 > [!TIP]
 >
-> Limits depend on model and tier, and can change over time. 
+> Limits depend on model and tier, and can change over time.
 >
 > Check the latest limits before running: https://ai.google.dev/gemini-api/docs/quota. If you exceed limits, you may receive `429` errors until quota resets.
 
-#### 5. Read quiz instructions first
+#### 5. Complete the quizzes
 
-Before starting the quizzes:
+**Essay quizzes**
 
-1. Read each question carefully before selecting an answer.
-2. For the essay quizzes, answer all parts clearly using Big-O notation when requested.
-3. Keep answers concise and practical.
+Essay quizzes are a way for you to share your thoughts and have AI evaluate your answer against Stelios's approach to solving the problem. Read the instructions carefully before you start.
 
-#### 6. Complete the quizzes
+- Type your answer in the prompt.
+- Press `Enter` for a new line.
+- Type `/end` on its own line to finish.
+- AI will then evaluate your answer.
 
-Essay quiz:
+Essay quiz 1:
 
 ```bash
 quizmd quizzes/python-data-cleaning-tradeoff-essay.md
@@ -115,7 +116,21 @@ Essay quiz 2:
 quizmd quizzes/python-complexity-basics-essay.md
 ```
 
-Debug quiz:
+**Debug quizzes**
+
+A debug quiz helps you find and fix errors in code. Read each prompt carefully before you start editing. Change only what is needed, line by line. Use hints if you get stuck.
+
+Rules:
+
+- Press `D` or `d` to unlock the editor and fix the code
+- Line numbers are shown by default
+- Press `Esc` to open actions
+- In actions, choose Proceed or Show hint with `↑/↓`, then press `Enter`
+- The hint points to the line where the error exists
+- Press `Ctrl+C` to exit at any time
+- Follow code style. Use spaces around operators, for example: `x = 0` (not `x= 0`).
+
+Try it out:
 
 ```bash
 quizmd quizzes/python-session-01-debug-quiz.md
