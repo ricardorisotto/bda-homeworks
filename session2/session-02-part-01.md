@@ -107,6 +107,8 @@ Essay quizzes are a way for you to share your thoughts and have AI evaluate your
 - Type `/end` on its own line to finish.
 - AI will then evaluate your answer.
 
+**Make your terminal window larger for better visibility.**
+
 Essay quiz 1:
 
 ```bash
