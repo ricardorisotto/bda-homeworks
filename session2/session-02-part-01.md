@@ -52,7 +52,7 @@ pip install -r requirements.txt
 
 #### 3. Create API key (free)
 
-Go to Google AI Studio and create an API key:
+Go to Google AI Studio, login using your personal gmail account and create an API key:
 
 - https://aistudio.google.com/app/api-keys
 - Add a name (or keep the default) and choose `Default Gemini Project`.
