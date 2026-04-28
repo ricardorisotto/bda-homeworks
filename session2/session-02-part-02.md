@@ -18,40 +18,16 @@ Before starting:
 
 1. Open the `session2` folder in Visual Studio Code.
 2. Create and activate your virtual environment:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-On Windows (VS Code terminal):
-
-- Create venv (recommended): `python -m venv .venv`
-- PowerShell: `.venv\Scripts\Activate.ps1` (may be blocked by execution policy on some machines)
-- If activation is blocked, run scripts directly with: `.venv\Scripts\python.exe your_script.py`
-- Optional temporary PowerShell bypass (current session only):
-  `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
-  Then run: `.venv\Scripts\Activate.ps1`
-
-3. Examine the dependencies and install necessary requirements:
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Create your exercise files inside the `solutions` folder e.g.:
-
-```txt
-session2/solutions/exercise-02-01.py
-```
-
+3. Examine the dependencies and install necessary requirements.
+4. Create your exercise files inside the `session2/solutions` folder.
+5. 
 #### 3. Basics you should know
 
 The `csv.DictReader(file)` reads each CSV row as a `dict` (dictionary). Keys come from the header row (column names). Values are still strings, so numeric conversion is manual when needed.
 
 *Let's start with the basics of dictionaries.*
 
-A Python dictionary is a way to store data in key → value pairs (like a real dictionary: word → meaning). Instead of using numbers (like lists), you use keys (names) to get values.
+A Python dictionary lets you store data as key → value pairs (like word → meaning). Instead of using numbers like lists, you use names (keys) to find values, which is easier to read and understand.
 
 ```python
 person = {
@@ -80,7 +56,7 @@ person["city"] = "Athens"     # update
 del person["city"]
 ```
 
-**Loop through dictionary**
+**Loop through dictionary using `items()`**
 
 ```python
 for key, value in person.items():
@@ -97,7 +73,7 @@ hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir .
 
 Expected result: `movies.csv` appears in your current folder.
 
-Run the scripts from the `session2` folder. If you run from the `bda` root, use `open("session2/movies.csv", "r")`.
+Run your script from the `bda` root folder. You can then load the file using `open("session2/movies.csv", "r")`, or move the file into the same folder as your script.
 
 Let's create our first script. File: `session2/solutions/exercise-02-01.py`
 
