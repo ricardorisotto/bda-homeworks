@@ -1,11 +1,11 @@
 # Essay Question: choose the better cleaning approach
 
 ## Question
-Assume `my_data` contains 2 million rows and some missing values.
+Assume that `my_data` is a list with many rows, and some values are missing (represented as empty strings "").
 
 You can:
 1. Clean in place (modify the original list directly), or
-2. Copy first, then clean the copied list.
+2. Copy first to a new list, then clean the copied list.
 
 Compare the two approaches in terms of:
 - time complexity
@@ -19,13 +19,13 @@ Then explain which option you would choose for:
 Be specific with Big-O notation (for example `O(n)`, `O(1)`, `O(n)` extra space).
 
 ## Instructions for Students
-Write 10-14 lines. Use at least one sentence per bullet area above.
+Write 10-14 lines.
 
 ## Instructor Name
 Stelios
 
 ## Hint
-🤔 Hint: In production, reversibility and auditability are often as important as speed.
+🤔 Hint: In real-world systems, it’s important to be able to undo changes and trace what happened, not just run things quickly.
 
 ## Evaluation Criteria (Total: 4 points)
 1. **Complexity comparison accuracy (1 point)**
