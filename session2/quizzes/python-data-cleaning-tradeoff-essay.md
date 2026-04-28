@@ -28,24 +28,26 @@ Stelios
 🤔 Hint: In real-world systems, it’s important to be able to undo changes and trace what happened, not just run things quickly.
 
 ## Evaluation Criteria (Total: 4 points)
-1. **Complexity comparison accuracy (1 point)**
-- Correctly states:
-  - in-place clean: `O(n)` time, `O(1)` extra space
-  - copy-first clean: `O(n)` copy + `O(n)` clean (overall linear), `O(n)` extra space
-- We expect both options to be discussed, not just one.
-- We expect a short justification of *why* the space differs (copy allocation vs no copy).
-2. **Risk/safety reasoning (1 point)**
-- Explains mutation risk and why preserving raw data matters
-- We expect mention of at least one concrete risk (for example accidental overwrite, difficult rollback, harder auditing).
-- We expect explanation of why preserving raw data improves verification and debugging.
-3. **Context-aware choice (1 point)**
-- Gives different reasonable choices for one-off vs production contexts
-- We expect one clear recommendation for a quick local script and one for production.
-- We expect the recommendation to be tied to constraints (memory budget, reliability, auditability, recovery needs).
-4. **Clarity and structure (1 point)**
-- Response is organized, specific, and practical
-- We expect clear wording with minimal ambiguity and consistent use of terms like in-place, copy-first, and extra space.
-- We expect the answer to stay within the requested length while still addressing all required bullets.
+1. **Complexity comparison accuracy (1 point)**  
+- Correctly states:  
+  - in-place clean: `O(n)` time, `O(1)` extra space  
+  - copy-first clean: `O(n)` time, `O(n)` extra space  
+- We expect both approaches to be discussed clearly.  
+- We expect a brief explanation of *why* space differs (copy requires additional memory, in-place does not).
+2. **Risk/safety reasoning (1 point)**  
+- Explains the risks of modifying data in place (e.g., data corruption, loss of original data).  
+- We expect at least one concrete risk (e.g., failure during processing, inability to recover original data without reloading).  
+- We expect explanation of why keeping a copy improves safety, debugging, and reliability.
+3. **Context-aware choice (1 point)**  
+- Distinguishes between use cases (quick script vs production).  
+- We expect a reasonable recommendation:
+  - in-place may be acceptable for quick, local tasks  
+  - copy-first is preferred in production for safety  
+- We expect justification based on constraints such as memory, performance, and data integrity.
+4. **Clarity and structure (1 point)**  
+- Response is clear, logically structured, and easy to follow.  
+- We expect correct use of terms like in-place, copy-first, time complexity, and space complexity.  
+- We expect the answer to be concise while still covering all key points.
 
 ## Reference Answer
 Let `n` be the number of rows in `my_data`.
