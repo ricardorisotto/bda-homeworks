@@ -1,4 +1,4 @@
-### Session 2 | part 1
+### Session 2 | Part 1
 
 > In Session 2, we start working with CSV files using dictionary-style rows. This is quite different from arrays, because we can use column names as keys to access data (not indexes anymore).
 
@@ -27,86 +27,79 @@ source .venv/bin/activate
 On Windows (VS Code terminal):
 
 - Create venv (recommended): `python -m venv .venv`
-- Alternative on some installs: `py -m venv .venv`
 - PowerShell: `.venv\Scripts\Activate.ps1` (may be blocked by execution policy on some machines)
-- Command Prompt: `.venv\Scripts\activate.bat`
 - If activation is blocked, run scripts directly with: `.venv\Scripts\python.exe your_script.py`
 - Optional temporary PowerShell bypass (current session only):
   `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
   Then run: `.venv\Scripts\Activate.ps1`
 
-3. Install dependencies before using `hf`:
+3. Examine the dependencies and install necessary requirements:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If you are reusing your Session 1 virtual environment, make sure you already installed `session1/requirements.txt` (it includes `huggingface_hub`, which provides the `hf` command).
-
-4. Create (or open) your exercise file:
+4. Create your exercise files inside the `solutions` folder e.g.:
 
 ```txt
 session2/solutions/exercise-02-01.py
 ```
 
-If `solutions/` does not exist yet, create it first.
-
 #### 3. Basics you should know
 
-- `csv.DictReader(file)`: reads each CSV row as a `dict` (dictionary).
-- Keys come from the header row (column names).
-- Values are still strings, so numeric conversion is manual when needed.
-- Dictionary access is clearer than index access when column names are meaningful.
-- If you see `...` in a starter code snippet, fill up the missing code before running it.
+The`csv.DictReader(file)`: reads each CSV row as a `dict` (dictionary). Keys come from the header row (column names). Values are still strings, so numeric conversion is manual when needed.
 
-#### 4. Example 1: Read CSV rows as dictionaries
+*Let's start with the basics of dictionaries.*
 
-To run this tutorial, first download `movies.csv` from [Birkbeck/movies](https://huggingface.co/datasets/Birkbeck/movies):
+A Python dictionary is a way to store data in key → value pairs (like a real dictionary: word → meaning). Instead of using numbers (like lists), you use keys (names) to get values.
 
-```bash
-hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir .
+```python
+person = {
+    "name": "Stelios",
+    "age": 20, # I wish
+    "city": "London"
+}
 ```
 
-On Windows PowerShell:
+**Access values**
 
-```powershell
-hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir .
+```python
+print(person["name"])   # Stelios
+```
+
+**Add or change values**
+
+```python
+person["job"] = "Developer"   # add new
+person["city"] = "Athens"     # update
+```
+
+**Remove values**
+
+```python
+del person["city"]
+```
+
+**Loop through dictionary**
+
+```python
+for key, value in person.items():
+    print(key, value)
+```
+
+#### 4. Read CSV rows as dictionaries
+
+To run this tutorial, first download `movies.csv` from the Hugging Face repo: [Birkbeck/movies](https://huggingface.co/datasets/Birkbeck/movies)
+
+```bash
+hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir 
 ```
 
 Expected result: `movies.csv` appears in your current folder.
 
 Run the scripts from the `session2` folder. If you run from the `bda` root, use `open("session2/movies.csv", "r")`.
 
-#### 4.1. Safe download for `movies_incomplete.csv`
-
-Warning: `Birkbeck/movies_incomplete` can expose a file named `movies.csv`. If you download it into the same folder, you can overwrite your original `movies.csv`.
-
-Safe flow:
-
-1. Download incomplete data into a temporary folder:
-
-```bash
-mkdir -p tmp_incomplete
-hf download Birkbeck/movies_incomplete movies.csv --repo-type dataset --local-dir tmp_incomplete
-```
-
-2. Copy/rename into your working folder:
-
-```bash
-cp tmp_incomplete/movies.csv movies_incomplete.csv
-```
-
-On Windows PowerShell:
-
-```powershell
-mkdir tmp_incomplete
-hf download Birkbeck/movies_incomplete movies.csv --repo-type dataset --local-dir tmp_incomplete
-Copy-Item .\tmp_incomplete\movies.csv .\movies_incomplete.csv
-```
-
-Make sure the files are in your current folder. Then run the following script.
-
-File: `session2/solutions/exercise-02-01.py`
+Let's create our first script. File: `session2/solutions/exercise-02-01.py`
 
 ```python
 import csv
@@ -129,7 +122,8 @@ Expected output shape:
 > What are the time and space complexities of this script?
 >
 > <details>
->   <summary>Show answer</summary>
+> <summary>Show answer</summary>
+>
 >
 > Time: O(n)
 >
@@ -137,7 +131,7 @@ Expected output shape:
 >
 > </details>
 
-#### 5. Example 2: Print one named column
+#### 5. Print one named column
 
 File: `session2/solutions/exercise-02-01.py`
 
@@ -154,7 +148,8 @@ Expected output shape:
 
 ```txt
 Romance
-Action, Animation, Thriller
+Action, 
+Animation, 
 Thriller
 ...
 ```
@@ -164,7 +159,8 @@ Thriller
 > What are the time and space complexities of this script?
 >
 > <details>
->   <summary>Show answer</summary>
+> <summary>Show answer</summary>
+>
 >
 > Time: O(n)
 >
@@ -172,9 +168,9 @@ Thriller
 >
 > </details>
 
-#### 6. Example 3: Count rows using a counter
+#### 6. Count rows using a counter
 
-Count how many rows have `year == "2020"`:
+Count how many rows are from 2020. Complete the missing code. 
 
 File: `session2/solutions/exercise-02-01.py`
 
@@ -185,27 +181,29 @@ count = 0
 
 with open("movies.csv", "r") as file:
     reader = csv.DictReader(file)
-    for row in reader:
-        if row["year"] == "2020":
-            count += 1
+		...
 
 print(count)
 ```
 
 > [!TIP]
 >
-> Why do we still use a counter even with dictionaries?
->
 > <details>
->   <summary>Show answer</summary>
+> <summary>Show solution</summary>
 >
-> Dictionaries change how we access columns (by name), but counting logic is still loop + condition + counter.
+> ```python
+> ...
+> for row in reader:
+>     if row["year"] == "2020":
+>         count += 1
+> ...
+> ```
 >
 > </details>
 
-#### 7. Example 4: Find first match with `break`
+#### 7. Find first match with `break`
 
-Find the first row where `genres` contains `Action`:
+Find the first row where `genres` contains `Action`. Fill up the missing code.
 
 File: `session2/solutions/exercise-02-01.py`
 
@@ -215,25 +213,37 @@ import csv
 with open("movies.csv", "r") as file:
     reader = csv.DictReader(file)
     for row in reader:
-        if "Action" in row["genres"]:
-            print(row)
-            break
+      ...
+
 ```
 
 > [!TIP]
 >
-> What are the time and space complexities of this script?
+> What are the time and space complexities of this script? See solutions also
 >
 > <details>
->   <summary>Show answer</summary>
+> <summary>Show answer</summary>
+>
 >
 > Time: O(n) worst case
 >
 > Space: O(1)
 >
+> ```python
+> ...
+> if "Action" in row["genres"]:
+>    print(row)
+>    break
+> ...
+> ```
+>
 > </details>
 
-#### 8. Exercise
+#### 8. Call Stelios for a quick challenge 🔥
+
+Call Stelios for a quick challenge question before moving to the exercise.
+
+#### 9. Exercise
 
 Add your answers to:
 
@@ -241,9 +251,9 @@ Add your answers to:
 session2/solutions/exercise-02-01.py
 ```
 
-Tasks for `Birkbeck/movies`:
+Use the `Birkbeck/movies` dataset from Hugging Face.
 
-1. Print the field names from `reader.fieldnames`.
+1. Examine the field names using `reader.fieldnames`. Print the names.
 2. Print only the first 5 data rows.
 3. Count how many movies are from the `USA`.
 4. Find and print the first movie where `genres` is exactly `Action`.
@@ -251,12 +261,12 @@ Tasks for `Birkbeck/movies`:
 6. In one short comment, explain one benefit of `DictReader` over `csv.reader`.
 7. What are the time and space complexities of your script(s)?
 
-Tasks for `Birkbeck/movies_incomplete`:
+Use the `Birkbeck/movies_incomplete` dataset from Hugging Face. You might need to `pull` it.
 
 1. Find the missing data point and print row and column.
 2. Find the average of `votes` from `movies_incomplete.csv`. Why does the naive script fail? How can you fix it?
 
-#### 9. Quiz
+#### 10. Quiz
 
 Complete the following quiz.
 
@@ -269,40 +279,4 @@ If you want to choose a theme:
 ```bash
 quizmd --theme light quizzes/python-csv-dictreader-quiz.md
 quizmd --theme dark quizzes/python-csv-dictreader-quiz.md
-```
-
-- Use `--theme light` if your terminal has a white/light background.
-- Use `--theme dark` if your terminal has a dark background.
-
-> For accessibility use this: `quizmd --no-color quizzes/python-csv-dictreader-quiz.md`
-
-#### 10. Call Stelios
-
-Call Stelios to challenge you with a question.
-
-#### 11. Suggested structure and README update
-
-Keep your session structure consistent:
-
-```txt
-session2/
-  README.md
-  solutions/
-    exercise-02-01.py
-    exercise-02-02.py
-```
-
-Update `README.md` after completing this tutorial.
-
-Example update:
-
-```md
-## Files
-- `solutions/exercise-02-01.py`
-  - Goal: practice DictReader, key access, and first-match search
-  - Status: completed
-
-## Notes
-- Learned to access CSV columns by name with DictReader.
-- Learned to combine dictionary access with counters and break.
 ```
