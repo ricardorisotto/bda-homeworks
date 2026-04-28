@@ -1,6 +1,6 @@
 # Big data analytics
 
-Welcome to the Big Data Analytics lab repository. This repo contains all weekly materials including tutorials, exercises, quizzes, cheatsheets, and homework.
+Welcome to the Big Data Analytics lab repository. This repo contains weekly materials including tutorials, exercises, quizzes, homework, and reference solutions.
 
 ## Structure
 
