@@ -76,6 +76,9 @@ On Windows PowerShell:
 $env:GEMINI_API_KEY="PASTE_YOUR_KEY"
 ```
 
+> [!TIP]
+> You can use an `OPENAI_API_KEY` if you have one. Gemini is free to use, but there are some limits.
+ 
 **Test key is set**
 
 Run this quick check in your terminal:
