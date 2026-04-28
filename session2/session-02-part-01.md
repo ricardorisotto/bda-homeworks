@@ -1,6 +1,6 @@
 ### Session 2 | Part 1
 
-> In Part 1, you will prepare Gemini API access and run an AI-assisted data-cleaning workflow, then complete a set of quizzes.
+> In Part 1, you will prepare Gemini API access and complete a set of quizzes. You will reuse the Gemini key later while coding.
 
 #### 1. Goal
 
