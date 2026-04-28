@@ -1,16 +1,13 @@
 ### Session 2 | Part 1
 
-> In Session 2, we start working with CSV files using dictionary-style rows. This is quite different from arrays, because we can use column names as keys to access data (not indexes anymore).
+> In Part 1, you will prepare Gemini API access and run an AI-assisted data-cleaning workflow, then complete a set of quizzes.
 
 #### 1. Goal
 
-First, you will practice core CSV dictionary logic using:
+You will:
 
-- `csv.DictReader`
-- key-based access (for example `row["title"]`)
-- counters
-- `for` loops
-- `break` for first-match search
+- create a free API key in Google AI Studio
+- complete a set of quizzes
 
 #### 2. Prerequisites
 
@@ -24,259 +21,86 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-On Windows (VS Code terminal):
+Windows PowerShell:
 
-- Create venv (recommended): `python -m venv .venv`
-- PowerShell: `.venv\Scripts\Activate.ps1` (may be blocked by execution policy on some machines)
-- If activation is blocked, run scripts directly with: `.venv\Scripts\python.exe your_script.py`
-- Optional temporary PowerShell bypass (current session only):
-  `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`
-  Then run: `.venv\Scripts\Activate.ps1`
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
 
-3. Examine the dependencies and install necessary requirements:
+3. Install requirements:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-4. Create your exercise files inside the `solutions` folder e.g.:
+#### 3. Create API key (free)
 
-```txt
-session2/solutions/exercise-02-01.py
-```
+Go to Google AI Studio and create an API key:
 
-#### 3. Basics you should know
+- https://aistudio.google.com/app/api-keys
+- Add a name (or keep default) and choose `Default Gemini Project`.
+- Create a key and keep it private.
+- Copy the API key e.g. `AIza...`.
 
-The`csv.DictReader(file)`: reads each CSV row as a `dict` (dictionary). Keys come from the header row (column names). Values are still strings, so numeric conversion is manual when needed.
+#### 4. Set API key in terminal
 
-*Let's start with the basics of dictionaries.*
-
-A Python dictionary is a way to store data in key → value pairs (like a real dictionary: word → meaning). Instead of using numbers (like lists), you use keys (names) to get values.
-
-```python
-person = {
-    "name": "Stelios",
-    "age": 20, # I wish
-    "city": "London"
-}
-```
-
-**Access values**
-
-```python
-print(person["name"])   # Stelios
-```
-
-**Add or change values**
-
-```python
-person["job"] = "Developer"   # add new
-person["city"] = "Athens"     # update
-```
-
-**Remove values**
-
-```python
-del person["city"]
-```
-
-**Loop through dictionary**
-
-```python
-for key, value in person.items():
-    print(key, value)
-```
-
-#### 4. Read CSV rows as dictionaries
-
-To run this tutorial, first download `movies.csv` from the Hugging Face repo: [Birkbeck/movies](https://huggingface.co/datasets/Birkbeck/movies)
+On macOS/Linux:
 
 ```bash
-hf download Birkbeck/movies movies.csv --repo-type dataset --local-dir 
+export GEMINI_API_KEY="PASTE_YOUR_KEY"
 ```
 
-Expected result: `movies.csv` appears in your current folder.
+On Windows PowerShell:
 
-Run the scripts from the `session2` folder. If you run from the `bda` root, use `open("session2/movies.csv", "r")`.
-
-Let's create our first script. File: `session2/solutions/exercise-02-01.py`
-
-```python
-import csv
-
-with open("movies.csv", "r") as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-        print(row)
+```powershell
+$env:GEMINI_API_KEY="PASTE_YOUR_KEY"
 ```
 
-Expected output shape:
+**Test key is set**
 
-```txt
-{'movie_id': '1', 'title': 'Movie 1', 'year': '2020', ...}
-{'movie_id': '2', 'title': 'Movie 2', 'year': '1994', ...}
-```
-
-> [!TIP]
->
-> What are the time and space complexities of this script?
->
-> <details>
-> <summary>Show answer</summary>
->
->
-> Time: O(n)
->
-> Space: O(1)
->
-> </details>
-
-#### 5. Print one named column
-
-File: `session2/solutions/exercise-02-01.py`
-
-```python
-import csv
-
-with open("movies.csv", "r") as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-        print(row["genres"])
-```
-
-Expected output shape:
-
-```txt
-Romance
-Action, 
-Animation, 
-Thriller
-...
-```
-
-> [!TIP]
->
-> What are the time and space complexities of this script?
->
-> <details>
-> <summary>Show answer</summary>
->
->
-> Time: O(n)
->
-> Space: O(1)
->
-> </details>
-
-#### 6. Count rows using a counter
-
-Count how many rows are from 2020. Complete the missing code. 
-
-File: `session2/solutions/exercise-02-01.py`
-
-```python
-import csv
-
-count = 0
-
-with open("movies.csv", "r") as file:
-    reader = csv.DictReader(file)
-		...
-
-print(count)
-```
-
-> [!TIP]
->
-> <details>
-> <summary>Show solution</summary>
->
-> ```python
-> ...
-> for row in reader:
->     if row["year"] == "2020":
->         count += 1
-> ...
-> ```
->
-> </details>
-
-#### 7. Find first match with `break`
-
-Find the first row where `genres` contains `Action`. Fill up the missing code.
-
-File: `session2/solutions/exercise-02-01.py`
-
-```python
-import csv
-
-with open("movies.csv", "r") as file:
-    reader = csv.DictReader(file)
-    for row in reader:
-      ...
-
-```
-
-> [!TIP]
->
-> What are the time and space complexities of this script? See solutions also
->
-> <details>
-> <summary>Show answer</summary>
->
->
-> Time: O(n) worst case
->
-> Space: O(1)
->
-> ```python
-> ...
-> if "Action" in row["genres"]:
->    print(row)
->    break
-> ...
-> ```
->
-> </details>
-
-#### 8. Call Stelios for a quick challenge 🔥
-
-Call Stelios for a quick challenge question before moving to the exercise.
-
-#### 9. Exercise
-
-Add your answers to:
-
-```txt
-session2/solutions/exercise-02-01.py
-```
-
-Use the `Birkbeck/movies` dataset from Hugging Face.
-
-1. Examine the field names using `reader.fieldnames`. Print the names.
-2. Print only the first 5 data rows.
-3. Count how many movies are from the `USA`.
-4. Find and print the first movie where `genres` is exactly `Action`.
-5. Find and print the first movie where `Action` appears inside `genres`.
-6. In one short comment, explain one benefit of `DictReader` over `csv.reader`.
-7. What are the time and space complexities of your script(s)?
-
-Use the `Birkbeck/movies_incomplete` dataset from Hugging Face. You might need to `pull` it.
-
-1. Find the missing data point and print row and column.
-2. Find the average of `votes` from `movies_incomplete.csv`. Why does the naive script fail? How can you fix it?
-
-#### 10. Quiz
-
-Complete the following quiz.
-
-```shell
-quizmd quizzes/python-csv-dictreader-quiz.md
-```
-
-If you want to choose a theme:
+Run this quick check in your terminal:
 
 ```bash
-quizmd --theme light quizzes/python-csv-dictreader-quiz.md
-quizmd --theme dark quizzes/python-csv-dictreader-quiz.md
+python3 -c 'import os; k=os.getenv("GEMINI_API_KEY"); print("GEMINI_API_KEY set:", bool(k)); print("Key length:", len(k) if k else 0)'
+```
+
+If `GEMINI_API_KEY set: True` appears and key length is greater than 0, your environment variable is working. Clear your terminal using `clear`, and let's proceed.
+
+**Limits note**
+
+Google AI Studio is free, but it has usage limits (typically 5-15 requests per minute, depending on the model).
+
+> [!TIP]
+>
+> Limits depend on model and tier, and can change over time. 
+>
+> Check the latest limits before running: https://ai.google.dev/gemini-api/docs/quota. If you exceed limits, you may receive `429` errors until quota resets.
+
+#### 5. Read quiz instructions first
+
+Before starting the quizzes:
+
+1. Read each question carefully before selecting an answer.
+2. For the essay quizzes, answer all parts clearly using Big-O notation when requested.
+3. Keep answers concise and practical.
+
+#### 6. Complete the quizzes
+
+Essay quiz:
+
+```bash
+quizmd quizzes/python-data-cleaning-tradeoff-essay.md
+```
+
+Essay quiz 2:
+
+```bash
+quizmd quizzes/python-complexity-basics-essay.md
+```
+
+Debug quiz:
+
+```bash
+quizmd quizzes/python-session-01-debug-quiz.md
 ```

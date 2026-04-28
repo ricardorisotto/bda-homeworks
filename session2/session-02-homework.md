@@ -1,28 +1,44 @@
-### Session 2 | homework
+### Session 2 | Homework
 
-> In this homework, you will use Gemini API to help fill missing values in a CSV dataset.
+> In this homework, you will treat Gemini as a black-box function: input prompt -> output text. Then you will use that function to help clean missing values in a dataset.
 
 #### 1. Goal
 
 You will:
 
-- create a free API key in Google AI Studio
-- call Gemini from Python
+- create a free API key in Google AI Studio (if you don't already have one)
+- call Gemini from Python using one reusable function
 - load `studio_ghibli_movies.csv`
-- build a simple AI-assisted cleaner for missing fields
+- use AI to fill missing fields
 - save a cleaned dataset to disk
 
-#### 2. Create API key (free)
+#### 2. Prerequisites
 
-Go to Google's AI studio, login using your personal gmail and create an API key:
+From `session2/`:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Windows PowerShell:
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+#### 3. Create API key (free)
+
+Go to Google AI Studio:
 
 - https://aistudio.google.com/app/api-keys
-- Add a name and choose `Default Gemini Project`.
-- Copy the API key.
+- Add a name and choose `Default Gemini Project`
+- Copy your API key
 
-Create a key and keep it private.
-
-Set it in your terminal (macOS/Linux):
+Set it in terminal:
 
 ```bash
 export GEMINI_API_KEY="PASTE_YOUR_KEY"
@@ -34,13 +50,19 @@ Windows PowerShell:
 $env:GEMINI_API_KEY="PASTE_YOUR_KEY"
 ```
 
-#### 3. Limits note
+Quick check:
+
+```bash
+python3 -c 'import os; k=os.getenv("GEMINI_API_KEY"); print("GEMINI_API_KEY set:", bool(k)); print("Key length:", len(k) if k else 0)'
+```
+
+#### 4. Limits note
 
 Google AI Studio is free, but it has usage limits.
 
-> Limits depend on model and tier, and can change over time. Check the latest limits before running: https://ai.google.dev/gemini-api/docs/quota. If you exceed limits, you may receive `429` errors until quota resets.
+> Limits depend on model and tier and can change over time. Check latest limits: https://ai.google.dev/gemini-api/docs/quota. If you exceed limits, you may see `429` errors until quota resets.
 
-#### 4. Download dataset
+#### 5. Download dataset
 
 Use: [Birkbeck/studio_ghibli_movies](https://huggingface.co/datasets/Birkbeck/studio_ghibli_movies)
 
@@ -50,7 +72,7 @@ hf download Birkbeck/studio_ghibli_movies studio_ghibli_movies.csv \
   --local-dir .
 ```
 
-#### 5. Basic Gemini call in Python
+#### 6. Gemini function
 
 Create:
 
@@ -58,85 +80,117 @@ Create:
 session2/solutions/exercise-02-homework.py
 ```
 
-Minimal example:
+Use this function as your AI helper.
 
-Use a current supported model (for example `gemini-2.5-flash`) or the latest model listed in the docs: https://ai.google.dev/gemini-api/docs/models
-
-File: `session2/solutions/exercise-02-homework.py`
+- This function uses a Gemini model and calls it remotely over the internet (API call).
+- For this homework, do not worry about all implementation details yet.
+- Treat this as a black box for now: prompt in, answer out.
 
 ```python
 import json
 import os
+from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    raise RuntimeError("GEMINI_API_KEY is not set")
 
-model_name = "gemini-2.5-flash"
-url = (
-    "https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{model_name}:generateContent"
-)
+def ask_gemini(prompt, model_name="gemini-2.5-flash"):
+    # Read your API key from the environment.
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        raise RuntimeError("GEMINI_API_KEY is not set")
 
-payload = {
-    "contents": [
-        {
-            "parts": [
-                {"text": "In one sentence, what is Studio Ghibli?"}
-            ]
-        }
-    ]
-}
+    # Build the remote Gemini endpoint URL.
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"{model_name}:generateContent"
+    )
 
-request = Request(
-    url,
-    data=json.dumps(payload).encode("utf-8"),
-    headers={
-        "Content-Type": "application/json",
-        "x-goog-api-key": api_key,
-    },
-    method="POST",
-)
+    # Prepare the request body with your prompt.
+    payload = {
+        "contents": [
+            {
+                "parts": [{"text": prompt}]
+            }
+        ]
+    }
 
-with urlopen(request, timeout=60) as response:
-    data = json.loads(response.read().decode("utf-8"))
+    # Create an HTTP POST request with JSON payload and API key.
+    request = Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "x-goog-api-key": api_key,
+        },
+        method="POST",
+    )
 
-text = data["candidates"][0]["content"]["parts"][0]["text"]
-print(text)
+    # Send request, parse JSON response, and return only model text.
+    # If quota/rate limit is reached, show a student-friendly message.
+    try:
+        with urlopen(request, timeout=60) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except HTTPError as err:
+        if err.code == 429:
+            raise RuntimeError(
+                "Gemini rate/limit reached. Please wait a minute and try again."
+            ) from err
+        raise
+
+    return data["candidates"][0]["content"]["parts"][0]["text"].strip()
 ```
 
-#### 6. Homework exercise (AI-assisted cleaning)
+Tip:
+- Be careful with Gemini limits.
+- `gemini-2.5-flash` is a current model today, but this may change in the future.
+- Check the latest docs online before running: https://ai.google.dev/gemini-api/docs/models
+- Check quota/limits here: https://ai.google.dev/gemini-api/docs/quota
+- If you get a limit error (`429`), wait a minute and try again.
 
-Tasks:
+Now call it like this:
 
-1. Load `studio_ghibli_movies.csv` with `csv.DictReader`.
-2. Detect rows with missing `year`.
-3. Ask Gemini for the likely release year for each missing movie title.
-4. Detect missing `music_by` (`Howl's Moving Castle`).
-5. Ask Gemini for the composer name and fill it.
-6. Save the cleaned file as `studio_ghibli_movies_ai_clean.csv`.
-7. Add a short verification step:
-   - print rows still containing empty values
-   - print how many values were filled by AI
-8. Add a short note in comments:
-   - one risk of AI-generated data
-   - one way to validate/cross-check results
+```python
+answer = ask_gemini("Your prompt here")
+print(answer)
+```
 
-#### 7. Prompt quality tips
+#### 7. Prompt examples (strict output)
 
-- Ask for one field at a time.
-- Ask for strict output format (for example, only the year as 4 digits).
-- Keep prompts short and deterministic.
-- Add fallback handling if the model returns unexpected output.
+Ask for strict format so parsing is easier.
 
-#### 8. Share your work
+Example: year only
 
-Create a **public GitHub repository** for your coursework. It is better to use one repository for all weekly submissions, for example: `bda-homeworks`.
+```txt
+Return only the 4-digit release year for the Studio Ghibli movie "Ponyo".
+Output format: only 4 digits, no extra text.
+```
+
+Example: composer only
+
+```txt
+Return only the composer full name for the Studio Ghibli movie "Howl's Moving Castle".
+Output format: name only, no extra text.
+```
+
+#### 8. Homework task
+
+In `session2/solutions/exercise-02-homework.py`:
+
+1. Load `studio_ghibli_movies.csv` using `csv.DictReader`.
+2. Find rows with missing `year`.
+3. For each missing `year`, call `ask_gemini(...)` and fill value.
+4. Find rows with missing `music_by`.
+5. For each missing `music_by`, call `ask_gemini(...)` and fill value.
+6. Save output file as `studio_ghibli_movies_ai_clean.csv`.
+7. Print:
+   - how many values were filled by AI
+   - any rows still missing values
+
+Keep it simple. You are using Gemini as a helper function, not building a full framework.
+
+#### 9. Submission
 
 Include:
 
 - `session2/solutions/exercise-02-homework.py`
 - optional: `studio_ghibli_movies_ai_clean.csv`
-
-Submission for this homework is to share your repository link in the class [MS Teams discussion forum](https://teams.microsoft.com/l/team/19%3AQLvZizpid98i6iNwF9_ee7RuoAUPC9YsOVoB3Yrq5YY1%40thread.tacv2/conversations?groupId=8b3672d8-2c38-4134-9725-3b779f03c2b0&tenantId=89d07f47-d258-463c-8700-635ffaeca38e), so Stelios and the rest of the students can see it.
