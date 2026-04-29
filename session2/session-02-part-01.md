@@ -69,7 +69,7 @@ Go to Google AI Studio, login using your personal gmail account and create an AP
 
 #### 4. Set API key in terminal
 
-On macOS/Linux:
+Return to your Visual Studio Code terminal. On macOS/Linux, run the following command (replace with your API key):
 
 ```bash
 export GEMINI_API_KEY="PASTE_YOUR_KEY"
@@ -82,7 +82,7 @@ $env:GEMINI_API_KEY="PASTE_YOUR_KEY"
 ```
 
 > [!TIP]
-> You can use an `OPENAI_API_KEY` if you have one. Gemini is free to use, but there are some limits.
+> You can either use an `OPENAI_API_KEY` if you have one. Gemini is free to use, but there are some limits.
  
 **Test key is set**
 
