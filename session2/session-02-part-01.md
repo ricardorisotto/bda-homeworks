@@ -15,13 +15,13 @@ Before starting:
 
 1. In Visual Studio Code terminal, update your local repository (do this each time before you start, since new updates may be available).
 
-Option A (full repository update, recommended):
+Full repository update, recommended:
 
 ```bash
 git pull origin main
 ```
 
-Option B (refresh only Session 2 material, useful when you want to update this folder only):
+**Do not run this.** Keep it as an option to refresh only session material when needed.
 
 ```bash
 git fetch origin
