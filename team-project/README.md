@@ -118,9 +118,9 @@ Example enriched data:
 
 | timestamp | name | text | time_taken_sec | question_flag | num_words | text_size_chars | speech_rate_wps | speaker_turn_id |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `2026-04-28T10:00:05` | Stelios | `Hello team, today we discuss mobile app growth.` | `6.2` | `False` | `8` | `46` | `1.29` | `1` |
+| `2026-04-28T10:00:05` | Stelios | `Hello team, today we discuss mobile app growth.` | `6.2` | `False` | `8` | `47` | `1.29` | `1` |
 | `2026-04-28T10:00:18` | Mary | `Can we target students first?` | `3.8` | `True` | `5` | `29` | `1.32` | `1` |
-| `2026-04-28T10:00:30` | Kate | `I think we need lower pricing for early users.` | `5.1` | `False` | `9` | `45` | `1.76` | `1` |
+| `2026-04-28T10:00:30` | Kate | `I think we need lower pricing for early users.` | `5.1` | `False` | `9` | `46` | `1.76` | `1` |
 | `2026-04-28T10:00:40` | Stelios | `Ok, let's proceed!` | `3.2` | `False` | `3` | `18` | `0.94` | `2` |
 
 ### Stage 4: Validate the CSV
