@@ -170,6 +170,13 @@ def main():
     remaining_missing = sum(missing_after_counts.values())
     print("Remaining missing values after cleaning:", remaining_missing)
 
+    print("\nComplexity:")
+    print("Load rows into memory: time O(n * m), space O(n * m)")
+    print("Find missing values: time O(n * m), space O(m + k)")
+    print("Fill known missing values: time O(n), space O(1)")
+    print("Average year and director count: time O(n), space O(n) for the years list")
+    print("Write cleaned CSV: time O(n * m), space O(1) extra")
+
 
 if __name__ == "__main__":
     main()
