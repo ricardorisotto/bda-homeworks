@@ -23,6 +23,7 @@ You can also pull updates from the original repository (upstream) when new mater
 
 - [Session 1 README](./session1/README.md)
 - [Session 2 README](./session2/README.md)
+- [Session 3 README](./session3/README.md)
 
 ## Notes
 
