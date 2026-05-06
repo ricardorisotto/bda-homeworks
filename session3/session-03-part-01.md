@@ -70,9 +70,30 @@ session3/les_miserables.txt
 
 Run your scripts from the `session3` folder, so `open("les_miserables.txt", "r")` works directly.
 
+For every exercise below:
+
+1. Create or edit the file named in the instructions.
+2. Copy the starter code into that file.
+3. Complete the lines marked with comments such as `# Provide here your solution`.
+4. Run the file from the `session3` folder.
+
+Use this command whenever you update the exercise file:
+
+```bash
+python3 solutions/exercise-03-01.py
+```
+
 #### 4. Iterables and iterators
 
 A list is an **iterable** because Python can loop over it using a `for` loop.
+
+Create a small scratch file:
+
+```txt
+session3/solutions/exercise-03-00.py
+```
+
+Copy this code into the file and run it:
 
 ```python
 numbers = [1, 2, 3]
@@ -81,7 +102,13 @@ for number in numbers:
     print(number)
 ```
 
+```bash
+python3 solutions/exercise-03-00.py
+```
+
 An **iterator** remembers its current position, making it ideal when we want to move through a sequence index by index.
+
+Replace the code in `session3/solutions/exercise-03-00.py` with this example and run it again:
 
 ```python
 numbers = [1, 2, 3]
@@ -90,6 +117,10 @@ it = iter(numbers)
 print(next(it))  # 1
 print(next(it))  # 2
 print(next(it))  # 3
+```
+
+```bash
+python3 solutions/exercise-03-00.py
 ```
 
 After the last value, `next(it)` raises `StopIteration`. A `for` loop handles this automatically.
@@ -115,7 +146,7 @@ When you loop over a file, Python reads one line at a time. Create:
 session3/solutions/exercise-03-01.py
 ```
 
-Try the following:
+Copy this code into `session3/solutions/exercise-03-01.py`:
 
 ```python
 with open("les_miserables.txt", "r", encoding="utf-8") as file:
@@ -192,6 +223,8 @@ with open(TEXT_FILE, "r", encoding="utf-8") as file:
 
 Find the first line containing `target = "Jean Valjean"`.
 
+Replace the code in `session3/solutions/exercise-03-01.py` with this skeleton:
+
 ```python
 TEXT_FILE = "les_miserables.txt"
 target = "Jean Valjean"
@@ -240,6 +273,8 @@ print(found)
 
 Count how many lines are in the file.
 
+Replace the code in `session3/solutions/exercise-03-01.py` with this skeleton:
+
 ```python
 TEXT_FILE = "les_miserables.txt"
 count = 0
@@ -281,6 +316,8 @@ print(count)
 #### 9. Exercise: average line length
 
 Compute the average line length.
+
+Replace the code in `session3/solutions/exercise-03-01.py` with this skeleton:
 
 ```python
 TEXT_FILE = "les_miserables.txt"
@@ -341,6 +378,8 @@ Use loading all data when you need:
 
 Example:
 
+Replace the code in `session3/solutions/exercise-03-01.py` with this example:
+
 ```python
 TEXT_FILE = "les_miserables.txt"
 
@@ -367,6 +406,8 @@ print(lines[100])
 
 A generator is a function that produces values one at a time.
 
+Replace the code in `session3/solutions/exercise-03-01.py` with this example:
+
 ```python
 def non_empty_lines(path):
     with open(path, "r", encoding="utf-8") as file:
@@ -376,7 +417,7 @@ def non_empty_lines(path):
                 yield line
 ```
 
-Use it:
+Add this code below the `non_empty_lines()` function in the same file:
 
 ```python
 for line in non_empty_lines("les_miserables.txt"):
@@ -399,6 +440,8 @@ for line in non_empty_lines("les_miserables.txt"):
 
 Write a program that counts how many non-empty lines contain the word `"Jean"` using `yield`.
 
+Replace the code in `session3/solutions/exercise-03-01.py` with this skeleton:
+
 ```python
 TEXT_FILE = "les_miserables.txt"
 target = "Jean"
@@ -418,7 +461,6 @@ count = 0
 
 print(count)
 ```
-
 
 > [!TIP]
 >
@@ -460,11 +502,11 @@ The next practice step is to run two quizzes about choosing the correct code whe
 First, run the multiple-choice quiz:
 
 ```bash
-quizmd quizzes/python-streaming-vs-loading-code-quiz.md
+quizmd --full-screen quizzes/python-streaming-vs-loading-code-quiz.md
 ```
 
 Then, run the reverse quiz:
 
 ```bash
-quizmd quizzes/python-streaming-vs-loading-reverse-quiz.md
+quizmd --full-screen quizzes/python-streaming-vs-loading-reverse-quiz.md
 ```

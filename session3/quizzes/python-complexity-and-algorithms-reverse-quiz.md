@@ -14,12 +14,12 @@ Output:
 Which sequence is this?
 
 Options:
-- Fibonacci numbers from F0 through F7
 - Powers of 2
+- Fibonacci numbers from F0 through F7
 - Factorials from 0! through 7!
 - Sorted job durations
 
-Answer: 1
+Answer: 2
 Type: single
 Explanation: These are Fibonacci values from F0 to F7.
 
@@ -81,12 +81,12 @@ This method stores results so it does not solve the same subproblem again.
 Which technique is being used?
 
 Options:
-- Dynamic programming
 - Random guessing
 - Factorial brute force
+- Dynamic programming
 - Plain text parsing
 
-Answer: 1
+Answer: 3
 Type: single
 Explanation: Dynamic programming stores and reuses subproblem results.
 
@@ -96,12 +96,12 @@ A problem is hard to solve, but a proposed solution can be checked quickly.
 Which class idea does this describe?
 
 Options:
-- NP
 - O(1)
 - Greedy
 - CSV
+- NP
 
-Answer: 1
+Answer: 4
 Type: single
 Explanation: NP problems have candidate solutions that can be verified quickly.
 
@@ -126,11 +126,11 @@ An algorithm divides a problem into smaller subproblems, solves them, and combin
 Which design approach is this?
 
 Options:
-- Divide and conquer
 - Greedy only
 - Random walk
+- Divide and conquer
 - Factorial brute force
 
-Answer: 1
+Answer: 3
 Type: single
 Explanation: Divide and conquer breaks a problem into smaller pieces and combines their solutions.

@@ -77,12 +77,12 @@ The team wrote a naive recursive function that repeats the same calculations aga
 
 Which idea should you introduce?
 
-- A. Factorial search
-- B. Loading all text files into memory
-- C. Random guessing
-- D. Dynamic programming
+- A. Dynamic programming
+- B. Factorial search
+- C. Loading all text files into memory
+- D. Random guessing
 
-Answer: D
+Answer: A
 Score: 2
 
 ### Feedback

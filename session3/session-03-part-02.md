@@ -35,7 +35,7 @@ pip install -r requirements.txt
 This quiz checks the core vocabulary from the lecture: time complexity, space complexity, recursion, greedy methods, dynamic programming, and P/NP ideas.
 
 ```bash
-quizmd quizzes/python-complexity-and-algorithms-quiz.md
+quizmd --full-screen quizzes/python-complexity-and-algorithms-quiz.md
 ```
 
 #### 4. Chaos quiz
@@ -43,23 +43,32 @@ quizmd quizzes/python-complexity-and-algorithms-quiz.md
 The chaos quiz gives you a scenario and asks you to recover from bad design decisions. It focuses on choosing between streaming, generators, recursion, dynamic programming, and greedy shortcuts.
 
 ```bash
-quizmd quizzes/python-complexity-and-algorithms-chaos-quiz.md
+quizmd --full-screen quizzes/python-complexity-and-algorithms-chaos-quiz.md
 ```
 
-#### 5. Reverse quiz
+#### 5. Session 2 chaos quiz
+
+This chaos quiz reviews Session 2 material. It asks you to repair a messy CSV cleaning pipeline using `DictReader`, dictionary keys, missing-value checks, `strip()`, raw versus cleaned copies, and complexity.
+
+```bash
+quizmd --full-screen quizzes/python-session-02-data-cleaning-chaos-quiz.md
+```
+
+#### 6. Reverse quiz
 
 The reverse quiz asks you to infer the concept from an output, a code snippet, or a short description. It is designed to test whether you can recognise an algorithmic idea when it appears in a different form.
 
 ```bash
-quizmd quizzes/python-complexity-and-algorithms-reverse-quiz.md
+quizmd --full-screen quizzes/python-complexity-and-algorithms-reverse-quiz.md
 ```
 
-#### 6. Optional validation
+#### 7. Optional validation
 
 If you want to check quiz file format:
 
 ```bash
 quizmd --validate quizzes/python-complexity-and-algorithms-quiz.md
 quizmd --validate quizzes/python-complexity-and-algorithms-chaos-quiz.md
+quizmd --validate quizzes/python-session-02-data-cleaning-chaos-quiz.md
 quizmd --validate quizzes/python-complexity-and-algorithms-reverse-quiz.md
 ```

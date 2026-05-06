@@ -1,295 +1,147 @@
-# Streaming or Load All: Choose the Code
+# Streaming and Generators Theory Quiz
 
 ## Question 1
 
-Strategy: `load all`
+In Python, what is an iterable?
 
-Task: Print line number 10,000 five times.
-
-Which code best matches the strategy?
-
-```python
-# A
-for i in range(5):
-    with open("les_miserables.txt", "r", encoding="utf-8") as file:
-        for line_number, line in enumerate(file, start=1):
-            if line_number == 10000:
-                print(line)
-                break
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-
-for i in range(5):
-    print(lines[9999])
-```
-
-- A
-- B
-- Both
-- Neither
+- A file that has already been fully loaded into memory
+- An object that Python can loop over
+- A function that must use `return`
+- A variable that stores only numbers
 
 Answer: 2
 Type: single
-Time: 50
-Explanation: B loads the file once and then uses direct indexing. A repeatedly scans from the start of the file.
+Time: 45
+Explanation: An iterable is something Python can loop over, such as a list, string, file, or generator.
 
 ## Question 2
 
-Strategy: `streaming`
+What does an iterator remember?
 
-Task: Print the first 20 non-empty lines without reading the rest of the file.
+- Its current position in a sequence
+- Every possible future value
+- The total memory used by Python
+- The name of the source file only
 
-Which code best matches the strategy?
-
-```python
-# A
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-
-non_empty = [line.strip() for line in lines if line.strip() != ""]
-for line in non_empty[:20]:
-    print(line)
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    text = file.read()
-
-non_empty = [line.strip() for line in text.splitlines() if line.strip() != ""]
-for line in non_empty[:20]:
-    print(line)
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 4
+Answer: 1
 Type: single
-Time: 55
-Explanation: Neither version is a good streaming solution. A loads all lines, and B loads the whole file as one string.
+Time: 45
+Explanation: An iterator remembers where it is, so repeated calls to `next()` move forward through the values.
 
 ## Question 3
 
-Strategy: `streaming`
+Which statements about file iteration are correct? Select two.
 
-Task: Print only the first line of `les_miserables.txt`.
+- A file loop always stores all lines in a list first
+- Looping over a file reads one line at a time
+- `readlines()` is required before every file loop
+- A file object can be used with `iter()` and `next()`
 
-Which code best matches the strategy?
-
-```python
-# A
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    first = next(file)
-    print(first)
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-    print(lines[0])
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 1
-Type: single
-Time: 45
-Explanation: A reads just the first line. B loads the whole file before printing line 1.
+Answer: 2,4
+Type: multiple
+Time: 60
+Explanation: Files can be streamed line by line, and file objects are iterable. `readlines()` loads all lines and is not required for looping.
 
 ## Question 4
 
-Strategy: `streaming`
+For the task "print only the first line of a large file", which strategy is usually best?
 
-Task: Find the first line containing `Fantine`.
+- Load all lines with `readlines()`
+- Sort the file first
+- Compare every line with every other line
+- Stream the file and read one line
 
-Which code best matches the strategy?
-
-```python
-# A
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-
-matches = [line for line in lines if "Fantine" in line]
-print(matches[0])
-```
-
-```python
-# B
-found = None
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        if "Fantine" in line:
-            found = line
-            break
-
-print(found)
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 2
+Answer: 4
 Type: single
-Time: 50
-Explanation: B streams line by line and stops as soon as it finds the first match. A loads every line first.
+Time: 45
+Explanation: Only the first line is needed, so streaming avoids unnecessary memory use.
 
 ## Question 5
 
-Strategy: `streaming`
+Which tasks usually require loading all selected data into memory? Select two.
 
-Task: Count all lines without storing them.
+- Sort every line alphabetically
+- Access line 10,000 many times
+- Print only the first line
+- Count all lines
 
-Which code best matches the strategy?
-
-```python
-# A
-count = 0
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        count += 1
-
-print(count)
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    count = sum(1 for line in file)
-
-print(count)
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 3
-Type: single
-Time: 45
-Explanation: Both versions read the file line by line and keep only a count.
+Answer: 1,2
+Type: multiple
+Time: 60
+Explanation: Sorting needs the lines together, and repeated random access is easier after loading. First-line printing and counting can stream.
 
 ## Question 6
 
-Strategy: `streaming`
+What does `yield` do in a generator function?
 
-Task: Count how many lines contain `Valjean` without storing the matching lines.
+- It stops the program immediately
+- It creates a list containing all results
+- It gives one value, pauses the function, and can continue later
+- It imports data from Hugging Face
 
-Which code best matches the strategy?
-
-```python
-# A
-count = 0
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        if "Valjean" in line:
-            count += 1
-
-print(count)
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-
-matches = [line for line in lines if "Valjean" in line]
-print(len(matches))
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 1
+Answer: 3
 Type: single
 Time: 50
-Explanation: A streams through the file and keeps only a counter. B stores all lines and then stores the matching lines.
+Explanation: `yield` produces one value at a time and keeps the function state for the next request.
 
 ## Question 7
 
-Strategy: `load all`
+Which statements about `yield` and `return` are correct? Select two.
 
-Task: Compare the first 100 lines against each other to find duplicate lines.
+- `yield` always makes the time complexity O(1)
+- `return` gives back one final value and stops the function
+- `return` automatically streams a file line by line
+- `yield` can produce a sequence of values over time
 
-Which code best matches the strategy?
-
-```python
-# A
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        print(line)
-        break
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()[:100]
-
-duplicates = []
-for i, left in enumerate(lines):
-    for right in lines[i + 1:]:
-        if left == right:
-            duplicates.append(left)
-
-print(duplicates)
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 2
-Type: single
-Time: 55
-Explanation: B keeps the first 100 lines together so they can be compared with each other. A only prints the first line.
+Answer: 2,4
+Type: multiple
+Time: 60
+Explanation: `return` ends the function, while `yield` lets a generator produce values one at a time. `yield` does not magically make all work constant time.
 
 ## Question 8
 
-Strategy: `load all`
+You count all lines in a file by looping over the file and keeping only a counter.
 
-Task: Sort every line alphabetically.
+What is the extra space complexity?
 
-Which code best matches the strategy?
+- O(n), because all lines must be stored
+- O(log n), because the file is searched
+- O(1), ignoring the current line buffer
+- O(n²), because the file has many lines
 
-```python
-# A
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    lines = file.readlines()
-
-lines.sort()
-print(lines[:10])
-```
-
-```python
-# B
-with open("les_miserables.txt", "r", encoding="utf-8") as file:
-    for line in file:
-        print(line)
-```
-
-- A
-- B
-- Both
-- Neither
-
-Answer: 1
+Answer: 3
 Type: single
-Time: 45
-Explanation: A loads all lines so they can be sorted together. B streams through the file and does not sort.
+Time: 50
+Explanation: The program keeps a fixed number of variables, so the extra space is constant apart from the current line being read.
+
+## Question 9
+
+You search for the first line containing `"Jean Valjean"` and stop with `break` when it is found.
+
+Which statements are correct? Select two.
+
+- `break` forces Python to read the rest of the file
+- The best case can be fast if the match is near the start
+- The worst case may still check every line
+- This task always needs `readlines()`
+
+Answer: 2,3
+Type: multiple
+Time: 60
+Explanation: `break` lets the search stop early, but if the match is late or missing, the loop may inspect the whole file.
+
+## Question 10
+
+A generator yields non-empty lines from a very large text file. Another loop counts how many yielded lines contain `"Jean"`.
+
+Which complexity description is most accurate?
+
+- Time is always O(1), because generators use `yield`
+- Space is always O(n), because generators store every yielded value
+- The program must load all lines before it can count
+- Time can be O(total characters checked), and extra space can stay small
+
+Answer: 4
+Type: single
+Time: 70
+Explanation: The program may still inspect many characters, but it can avoid storing the whole file by processing one yielded line at a time.
