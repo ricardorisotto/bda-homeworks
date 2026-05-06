@@ -64,9 +64,7 @@ Use the Birkbeck Hugging Face dataset:
 Download:
 
 ```bash
-hf download Birkbeck/les-miserables-txt les_miserables.txt \
-  --repo-type dataset \
-  --local-dir .
+hf download Birkbeck/les-miserables-txt les_miserables.txt --repo-type dataset --local-dir .
 ```
 
 Expected file:
