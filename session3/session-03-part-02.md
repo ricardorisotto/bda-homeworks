@@ -30,7 +30,11 @@ Windows PowerShell:
 pip install -r requirements.txt
 ```
 
-#### 3. Multiple-choice quiz
+#### 3. Call Stelios to challenge you
+
+Before starting the quizzes, call Stelios for one quick challenge question from the Session 3 challenge box.
+
+#### 4. Multiple-choice quiz
 
 This quiz checks the core vocabulary from the lecture: time complexity, space complexity, recursion, greedy methods, dynamic programming, and P/NP ideas.
 
@@ -38,7 +42,7 @@ This quiz checks the core vocabulary from the lecture: time complexity, space co
 quizmd --full-screen quizzes/python-complexity-and-algorithms-quiz.md
 ```
 
-#### 4. Chaos quiz
+#### 5. Chaos quiz
 
 The chaos quiz gives you a scenario and asks you to recover from bad design decisions. It focuses on choosing between streaming, generators, recursion, dynamic programming, and greedy shortcuts.
 
@@ -46,7 +50,7 @@ The chaos quiz gives you a scenario and asks you to recover from bad design deci
 quizmd --full-screen quizzes/python-complexity-and-algorithms-chaos-quiz.md
 ```
 
-#### 5. Session 2 chaos quiz
+#### 6. Session 2 chaos quiz
 
 This chaos quiz reviews Session 2 material. It asks you to repair a messy CSV cleaning pipeline using `DictReader`, dictionary keys, missing-value checks, `strip()`, raw versus cleaned copies, and complexity.
 
@@ -54,7 +58,7 @@ This chaos quiz reviews Session 2 material. It asks you to repair a messy CSV cl
 quizmd --full-screen quizzes/python-session-02-data-cleaning-chaos-quiz.md
 ```
 
-#### 6. Reverse quiz
+#### 7. Reverse quiz
 
 The reverse quiz asks you to infer the concept from an output, a code snippet, or a short description. It is designed to test whether you can recognise an algorithmic idea when it appears in a different form.
 
@@ -62,7 +66,7 @@ The reverse quiz asks you to infer the concept from an output, a code snippet, o
 quizmd --full-screen quizzes/python-complexity-and-algorithms-reverse-quiz.md
 ```
 
-#### 7. Optional validation
+#### 8. Optional validation
 
 If you want to check quiz file format:
 
