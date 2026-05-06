@@ -1,0 +1,56 @@
+Quiz: Python basics quiz
+Score: 5/6
+
+Question 1
+Why is Python called “Python”?
+Selected: 1. It was named after the comedy group *Monty Python*.
+Correct: 1. It was named after the comedy group *Monty Python*.
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Python was named after the British comedy group *Monty Python*, not the snake.
+
+Question 2
+What is a virtual environment (`.venv`)?
+Selected: 2. A separate environment that keeps project dependencies isolated.
+Correct: 2. A separate environment that keeps project dependencies isolated.
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: A virtual environment isolates dependencies so projects don’t conflict.
+
+Question 3
+When is `requirements.txt` needed?
+Selected: No answer
+Correct: 3. To list project dependencies so others can reproduce the setup.
+Imposters flagged: -
+Expected imposters: -
+Result: Wrong
+Explanation: `requirements.txt` ensures everyone installs the same packages.
+
+Question 4
+What is a dependency?
+Selected: 4. A library or package your project needs to run.
+Correct: 4. A library or package your project needs to run.
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Dependencies are external libraries required by your project.
+
+Question 5
+What is the problem if you run `pip install` without a virtual environment?
+Selected: 4. It installs packages globally and can cause conflicts between projects.
+Correct: 4. It installs packages globally and can cause conflicts between projects.
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Without a virtual environment, packages are installed globally and may conflict with other projects.
+
+Question 6
+What does `cd` mean in the terminal?
+Selected: 3. Change directory
+Correct: 3. Change directory
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: `cd` means change directory (move between folders). Sadly, it does not make coffee.

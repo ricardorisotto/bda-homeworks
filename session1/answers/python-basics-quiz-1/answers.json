@@ -1,0 +1,156 @@
+{
+  "quiz_title": "Python basics quiz",
+  "score": 5,
+  "score_total": 6,
+  "total_questions": 6,
+  "answers": [
+    {
+      "question_title": "Question 1",
+      "question_text": "Why is Python called “Python”?",
+      "selected_indexes": [
+        1
+      ],
+      "selected_labels": "1. It was named after the comedy group *Monty Python*.",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        1
+      ],
+      "correct_labels": "1. It was named after the comedy group *Monty Python*.",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": true,
+      "result_label": "Correct",
+      "answer_correct": true,
+      "question_points": 1,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "Python was named after the British comedy group *Monty Python*, not the snake."
+    },
+    {
+      "question_title": "Question 2",
+      "question_text": "What is a virtual environment (`.venv`)?",
+      "selected_indexes": [
+        2
+      ],
+      "selected_labels": "2. A separate environment that keeps project dependencies isolated.",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        2
+      ],
+      "correct_labels": "2. A separate environment that keeps project dependencies isolated.",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": true,
+      "result_label": "Correct",
+      "answer_correct": true,
+      "question_points": 1,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "A virtual environment isolates dependencies so projects don’t conflict."
+    },
+    {
+      "question_title": "Question 3",
+      "question_text": "When is `requirements.txt` needed?",
+      "selected_indexes": [],
+      "selected_labels": "",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        3
+      ],
+      "correct_labels": "3. To list project dependencies so others can reproduce the setup.",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": false,
+      "result_label": "Wrong",
+      "answer_correct": false,
+      "question_points": 0,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "`requirements.txt` ensures everyone installs the same packages."
+    },
+    {
+      "question_title": "Question 4",
+      "question_text": "What is a dependency?",
+      "selected_indexes": [
+        4
+      ],
+      "selected_labels": "4. A library or package your project needs to run.",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        4
+      ],
+      "correct_labels": "4. A library or package your project needs to run.",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": true,
+      "result_label": "Correct",
+      "answer_correct": true,
+      "question_points": 1,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "Dependencies are external libraries required by your project."
+    },
+    {
+      "question_title": "Question 5",
+      "question_text": "What is the problem if you run `pip install` without a virtual environment?",
+      "selected_indexes": [
+        4
+      ],
+      "selected_labels": "4. It installs packages globally and can cause conflicts between projects.",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        4
+      ],
+      "correct_labels": "4. It installs packages globally and can cause conflicts between projects.",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": true,
+      "result_label": "Correct",
+      "answer_correct": true,
+      "question_points": 1,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "Without a virtual environment, packages are installed globally and may conflict with other projects."
+    },
+    {
+      "question_title": "Question 6",
+      "question_text": "What does `cd` mean in the terminal?",
+      "selected_indexes": [
+        3
+      ],
+      "selected_labels": "3. Change directory",
+      "selected_imposters": [],
+      "selected_imposter_labels": "",
+      "correct_indexes": [
+        3
+      ],
+      "correct_labels": "3. Change directory",
+      "expected_imposters": [],
+      "expected_imposter_labels": "",
+      "is_correct": true,
+      "result_label": "Correct",
+      "answer_correct": true,
+      "question_points": 1,
+      "question_max_points": 1,
+      "imposter_true_positive": 0,
+      "imposter_false_positive": 0,
+      "imposter_false_negative": 0,
+      "explanation": "`cd` means change directory (move between folders). Sadly, it does not make coffee."
+    }
+  ]
+}
