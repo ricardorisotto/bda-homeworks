@@ -36,7 +36,7 @@ Before starting the quizzes, call Stelios for one quick challenge question from 
 
 #### 4. Multiple-choice quiz
 
-This quiz checks the core vocabulary from the lecture: time complexity, space complexity, recursion, greedy methods, dynamic programming, and P/NP ideas.
+This quiz checks the core material from the lecture: time complexity, space complexity, recursion, greedy methods, dynamic programming, and P/NP ideas.
 
 ```bash
 quizmd --full-screen quizzes/python-complexity-and-algorithms-quiz.md
