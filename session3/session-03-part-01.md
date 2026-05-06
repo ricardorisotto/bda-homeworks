@@ -22,6 +22,13 @@ Before starting:
 git pull origin main
 ```
 
+If this fails because you changed files and you only want to refresh the current `session3` folder, run:
+
+```bash
+git fetch origin
+git restore --source origin/main --worktree --staged -- .
+```
+
 2. Open the `session3` folder in Visual Studio Code and in terminal.
 
 ```bash
