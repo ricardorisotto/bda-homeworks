@@ -21,9 +21,14 @@ You can also pull updates from the original repository (upstream) when new mater
 
 ## Sessions
 
-- [Session 1 README](./session1/README.md)
-- [Session 2 README](./session2/README.md)
-- [Session 3 README](./session3/README.md)
+- [Session 1 README](./session1/README.md)  
+  Setup, Python fundamentals, loops/indexing, and CSV basics.
+- [Session 2 README](./session2/README.md)  
+  `csv.DictReader`, key-based data access, and practical data cleaning flow.
+- [Session 3 README](./session3/README.md)  
+  Iterators/generators, streaming vs loading, complexity, and intro RAG concepts.
+- [Session 4 README](./session4/README.md)  
+  Serial vs multiprocessing basics, process management, and `Pool`-based parallel image processing.
 
 ## Notes
 

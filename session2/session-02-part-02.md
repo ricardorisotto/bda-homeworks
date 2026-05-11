@@ -217,7 +217,7 @@ with open("movies.csv", "r") as file:
 
 > [!TIP]
 >
-> What are the time and space complexities of this script? See solutions also
+> What are the time and space complexities of this script?
 >
 > <details>
 > <summary>Show answer</summary>

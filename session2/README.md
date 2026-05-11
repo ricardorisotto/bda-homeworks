@@ -15,12 +15,14 @@ By the end of Session 2, you should be able to:
 2. [Part 2](./session-02-part-02.md)
 3. [Part 3](./session-02-part-03.md)
 4. [Homework](./session-02-homework.md)
-5. Review your [solutions](./solutions/) after attempting tasks yourself.
-6. Practice with [quizzes](./quizzes/) when ready.
+5. Write your own work in [solutions](./solutions/).
+6. Review [reference solutions](./session_solutions/) only after attempting tasks yourself.
+7. Practice with [quizzes](./quizzes/) when ready.
 
 ### Notes
 
 - Keep your own solutions in separate files inside `solutions/`.
 - Use exercise-style names in `solutions/` (for example `exercise-02-01.py`, `exercise-02-02.py`).
+- Reference answers are in `session_solutions/`.
 - Update this `README.md` with progress and notes.
 - Do not commit `.venv/` to GitHub.
