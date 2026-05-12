@@ -1,0 +1,58 @@
+Quiz: Debug Quiz: Session 01 Foundations
+Score: 14/14
+
+Question 1
+There are two errors. Fix the function so it correctly counts items in a list.
+Result: Perfect
+Points: 2/2
+Hint used: no
+Scoring mode: exact
+AI reviewed: no
+AI accepted: no
+Changed lines expected: 1, 4
+Submitted fix:
+def my_len(data):
+    count = 0
+    for item in data:
+        count += 1
+    return count
+
+Question 2
+There are two errors. Fix the script to print all valid indexes.
+Result: Perfect
+Points: 2/2
+Hint used: no
+Scoring mode: exact
+AI reviewed: no
+AI accepted: no
+Changed lines expected: 3, 4
+Submitted fix:
+data = [10, 20, 30, 40]
+
+for i in range(len(data)):
+    print(data[i])
+
+Question 3
+There is one logic error. Fix the script so it safely handles an empty list when computing the average.
+Result: Perfect
+Points: 10/10
+Hint used: no
+Scoring mode: ai_semantic
+AI reviewed: yes
+AI accepted: yes
+Changed lines expected: 1, 3, 5, 6, 7, 8, 9, 10, 11, 12
+Submitted fix:
+# The list can have any number of values, from empty ("No data") to hundreds.
+
+data = [10,20,30]
+
+total,count = 0,0
+
+for x in data:
+    total += x
+    count += 1
+
+if count != 0:
+    print(total / count)
+else:
+    print("No data")

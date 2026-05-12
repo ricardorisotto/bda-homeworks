@@ -1,0 +1,105 @@
+Quiz: Complexity and Algorithms
+Score: 7/8
+
+Question 1
+Output:
+0
+1
+1
+2
+3
+5
+8
+13
+
+Which sequence is this?
+Selected: 2. Fibonacci numbers from F0 through F7
+Correct: 2. Fibonacci numbers from F0 through F7
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: These are Fibonacci values from F0 to F7.
+
+Question 2
+This code repeatedly calls itself with `n - 1` and `n - 2`.
+
+```python
+def fib(n):
+    if n <= 1:
+        return n
+    return fib(n - 1) + fib(n - 2)
+```
+
+Which complexity best matches it?
+Selected: 3. O(log n)
+Correct: 4. O(2ⁿ)
+Imposters flagged: -
+Expected imposters: -
+Result: Wrong
+Explanation: Naive recursive Fibonacci recomputes many values, causing exponential time.
+
+Question 3
+A route planner tries every possible order of 9 cities.
+
+Which growth pattern best describes this?
+Selected: 3. O(n!)
+Correct: 3. O(n!)
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Trying every permutation of cities is factorial growth.
+
+Question 4
+A scheduling algorithm always places the next longest job on the currently least busy computer.
+
+Which method does this sound like?
+Selected: 1. Greedy
+Correct: 1. Greedy
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: The algorithm makes a locally good choice at each step.
+
+Question 5
+This method stores results so it does not solve the same subproblem again.
+
+Which technique is being used?
+Selected: 3. Dynamic programming
+Correct: 3. Dynamic programming
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Dynamic programming stores and reuses subproblem results.
+
+Question 6
+A problem is hard to solve, but a proposed solution can be checked quickly.
+
+Which class idea does this describe?
+Selected: 4. NP
+Correct: 4. NP
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: NP problems have candidate solutions that can be verified quickly.
+
+Question 7
+A problem is both in NP and NP-hard.
+
+What is it called?
+Selected: 2. NP-complete
+Correct: 2. NP-complete
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: NP-complete problems are both in NP and NP-hard.
+
+Question 8
+An algorithm divides a problem into smaller subproblems, solves them, and combines the answers.
+
+Which design approach is this?
+Selected: 3. Divide and conquer
+Correct: 3. Divide and conquer
+Imposters flagged: -
+Expected imposters: -
+Result: Correct
+Explanation: Divide and conquer breaks a problem into smaller pieces and combines their solutions.

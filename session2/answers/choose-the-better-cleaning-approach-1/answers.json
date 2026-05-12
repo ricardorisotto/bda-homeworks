@@ -1,0 +1,30 @@
+{
+  "mode": "essay",
+  "quiz_title": "choose the better cleaning approach",
+  "question": "Assume that `my_data` is a list with many rows, and some values are missing (represented as empty strings \"\").\n\nYou can:\n1. Clean in place (modify the original list directly), or\n2. Copy first to a new list, then clean the copied list.\n\nCompare the two approaches in terms of:\n- time complexity\n- space complexity\n- risk/safety\n\nThen explain which option you would choose for:\n- a quick one-off local script\n- a production workflow where raw data must be preserved\n\nBe specific with Big-O notation (for example `O(n)`, `O(1)`, `O(n)` extra space).",
+  "student_answer": "A list with many rows would be a n x r matrix, where m is the number of rows and r is the number of elements in each row. So option 1, to clean in place would take O(n x r) time complexity, but would be O(1) space complexity. Option 2, to copy to a new list would be one operation to copy, so time complexity would still be O(n x r) to clean the new list. But the space complexity would now be O(n x r) because of the copy. Even so, having a copy is much safer and less risky as you will not accidentally delete data that is then unrecoverable.",
+  "points_awarded": 3.0,
+  "total_points": 4,
+  "score_percent": 75.0,
+  "did_well": [
+    "Correctly identified the time and space complexity for both approaches using Big-O notation.",
+    "Provided a clear explanation of why space complexity differs (due to the copy requiring additional memory).",
+    "Correctly identified the primary risk of in-place modification as data unrecoverability."
+  ],
+  "missing": [
+    "The student did not provide specific recommendations for the two requested scenarios: a quick one-off local script and a production workflow.",
+    "Lacked justification for which method is preferred in specific contexts (e.g., prioritizing speed/memory for local tasks vs. integrity for production)."
+  ],
+  "suggestions": [
+    "Always ensure you answer every part of the prompt; the question specifically asked which option you would choose for two different scenarios.",
+    "In the future, explicitly state: 'For a quick script, I would choose [X] because...' and 'For production, I would choose [Y] because...'"
+  ],
+  "ai_unavailable": false,
+  "ai_error": "",
+  "ai_reason": "none",
+  "scoring_mode": "llm_rubric",
+  "scoring_confidence": "high",
+  "ai_provider": "gemini",
+  "ai_provider_requested": "auto",
+  "ai_model": "gemini-flash-latest"
+}
