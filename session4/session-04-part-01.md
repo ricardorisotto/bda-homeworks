@@ -81,7 +81,36 @@ pip install -r requirements.txt
 
 #### 4. Create your first multiprocessing file
 
-Open or create `session4/solutions/exercise-04-01.py`, replace its contents with this code, and run it.
+Before benchmarking, it helps to understand the basic time values we use:
+
+- day/time (human-readable) helps us log when something ran
+- Unix timestamp helps us store machine-friendly time values
+- `time.perf_counter()` is best for measuring elapsed runtime
+
+Quick warm-up:
+
+Create `session4/solutions/exercise-04-00-time.py`, add this code, and run it.
+
+```python
+from datetime import datetime
+import time
+
+now = datetime.now()
+
+print(f"Day: {now.strftime('%A')}")
+print(f"Time: {now.strftime('%H:%M:%S')}")
+print(f"Timestamp: {time.time():.2f}")
+```
+
+Run:
+
+```bash
+python3 solutions/exercise-04-00-time.py
+```
+
+Now create your first serial timing example.
+
+Create `session4/solutions/exercise-04-01.py`, add this code, and run it.
 
 ```python
 import time
@@ -108,6 +137,19 @@ python3 solutions/exercise-04-01.py
 ```
 
 Expected idea: serial execution should take about the sum of both sleeps (often around 4 seconds, but exact timing varies by machine/load).
+
+Checkpoint question:
+
+How long should this serial program take to run?
+
+<details>
+<summary>Show answer</summary>
+
+About 4 seconds in most runs.
+
+Why: the code runs two `time.sleep(2)` calls one after the other, so total serial time is close to `2 + 2 = 4` seconds (plus small overhead).
+
+</details>
 
 #### 5. Compare with multiprocessing execution
 
@@ -169,9 +211,22 @@ python3 solutions/exercise-04-01.py
 
 Expected idea: parallel time should usually be significantly lower than serial time (often near 2 seconds here, but exact timing varies).
 
+Checkpoint question:
+
+How long should this multiprocessing version take, and why is it usually faster than the serial one?
+
+<details>
+<summary>Show answer</summary>
+
+About 2 seconds in most runs.
+
+Why: both tasks sleep for 2 seconds, but they run in separate processes at the same time, so total time is closer to the longest single task instead of the sum.
+
+</details>
+
 #### 6. Exercise
 
-This exercise focuses on CPU-heavy workload with bubble sort. Open or create this file and complete it: `session4/solutions/exercise-04-01-part01.py`.
+This exercise focuses on CPU-heavy workload with bubble sort. Create and complete this file: `session4/solutions/exercise-04-01-part01.py`.
 
 * This script compares **serial** and **parallel** execution. It generates random numbers, sorts them using bubble sort, and measures how long the work takes.
 

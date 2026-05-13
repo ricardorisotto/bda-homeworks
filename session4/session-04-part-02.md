@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 #### 3. Mini tutorial (inline): `Pool.map(...)`
 
-Open or create this warm-up file and replace its contents with:
+Create this warm-up file and add this code:
 
 ```txt
 session4/solutions/exercise-04-02-warmup.py
@@ -95,7 +95,7 @@ What this shows:
 
 #### 4. Exercise
 
-Open or create this file and complete it:
+Create this file and complete it:
 
 ```txt
 session4/solutions/exercise-04-02.py

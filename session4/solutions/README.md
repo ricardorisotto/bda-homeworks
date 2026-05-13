@@ -8,4 +8,4 @@ Suggested files:
 - `exercise-04-01-part01.py`
 - `exercise-04-02.py`
 
-This folder contains starter templates (with TODOs) and one guided walkthrough file for Part 1 basics.
+This folder should contain your own files for Session 4 exercises.
