@@ -29,6 +29,7 @@ def parallel_runner():
     p1.start()
     p2.start()
 
+    # Join ensures we measure full task completion, not just process startup.
     p1.join()
     p2.join()
 

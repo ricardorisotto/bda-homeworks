@@ -32,12 +32,14 @@ def serial_runner(runs=3):
 def parallel_runner(runs=3):
     start = time.perf_counter()
 
+    # Track processes so we can join all of them before stopping the timer.
     processes = []
     for _ in range(runs):
         p = mp.Process(target=generate_and_sort_numbers)
         p.start()
         processes.append(p)
 
+    # join() blocks until each child process completes.
     for p in processes:
         p.join()
 

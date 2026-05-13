@@ -29,6 +29,8 @@ def parallel_runner():
     p1.start()
     p2.start()
 
+    # Wait for both child processes before stopping the timer.
+    # Without join(), we would only measure process launch time.
     p1.join()
     p2.join()
 

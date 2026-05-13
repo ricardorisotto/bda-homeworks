@@ -8,4 +8,4 @@ Suggested files:
 - `exercise-04-01-part01.py`
 - `exercise-04-02.py`
 
-This folder is intentionally empty except for starter templates.
+This folder contains starter templates (with TODOs) and one guided walkthrough file for Part 1 basics.

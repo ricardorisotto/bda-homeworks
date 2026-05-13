@@ -23,6 +23,7 @@ image_urls = [
 def download_and_rotate(item):
     idx, url = item
 
+    # Unique filenames prevent worker collisions when saving in parallel.
     input_path = os.path.join("images", f"image_{idx}.jpg")
     output_path = os.path.join("processed", f"rotated_image_{idx}.jpg")
 
@@ -46,6 +47,7 @@ def serial_runner(urls):
 def pool_runner(urls, workers=4):
     start = time.perf_counter()
 
+    # map expects one iterable of items, so we pack (idx, url) tuples first.
     items = list(enumerate(urls, start=1))
     with mp.Pool(processes=workers) as pool:
         pool.map(download_and_rotate, items)

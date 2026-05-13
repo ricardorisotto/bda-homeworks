@@ -23,6 +23,7 @@ def serial_runner(runs=3):
     start = time.perf_counter()
 
     # TODO: call generate_and_sort_numbers() runs times
+    # Note: while this TODO is not filled, timing is not meaningful.
     ...
 
     end = time.perf_counter()
@@ -32,11 +33,13 @@ def serial_runner(runs=3):
 def parallel_runner(runs=3):
     start = time.perf_counter()
 
+    # Keep references to processes so we can join them later.
     processes = []
 
     # TODO: create runs processes
     # TODO: start each process
     # TODO: wait for each process to finish
+    # Note: while this TODO is not filled, timing is not meaningful.
     ...
 
     end = time.perf_counter()

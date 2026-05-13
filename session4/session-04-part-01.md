@@ -15,8 +15,34 @@ You will:
 
 Before starting:
 
-1. Open the `session4` folder in Visual Studio Code.
-2. Create and activate a virtual environment.
+1. In Visual Studio Code terminal, update your local repository.
+
+```bash
+git pull origin main
+```
+
+If `git pull` fails because of local changes, use one of these paths:
+
+Keep your work (recommended):
+
+```bash
+git stash push -m "session4-wip"
+git pull origin main
+git stash pop
+```
+
+Discard your local changes in `session4` only (use with care):
+
+```bash
+# Run this only from inside the session4 folder.
+# Check first (it should end with `/bda/session4`):
+pwd
+git fetch origin
+git restore --source origin/main --worktree --staged -- .
+```
+
+2. Open the `session4` folder in Visual Studio Code and in terminal.
+3. Create and activate a virtual environment.
 
 ```bash
 python3 -m venv .venv
@@ -30,7 +56,7 @@ python -m venv .venv
 .venv\Scripts\Activate.ps1
 ```
 
-3. If `requirements.txt` is missing, create it in `session4/` with:
+4. If `requirements.txt` is missing, create it in `session4/` with:
 
 ```txt
 requests==2.32.3
@@ -38,7 +64,7 @@ Pillow
 quizmd
 ```
 
-4. Install dependencies:
+5. Install dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -55,7 +81,7 @@ pip install -r requirements.txt
 
 #### 4. Create your first multiprocessing file
 
-Create a new file `session4/solutions/exercise-04-01.py`, copy this code, and run it.
+Open or create `session4/solutions/exercise-04-01.py`, replace its contents with this code, and run it.
 
 ```python
 import time
@@ -81,11 +107,11 @@ Run:
 python3 solutions/exercise-04-01.py
 ```
 
-Expected idea: total time is around 4 seconds in serial mode.
+Expected idea: serial execution should take about the sum of both sleeps (often around 4 seconds, but exact timing varies by machine/load).
 
 #### 5. Compare with multiprocessing execution
 
-Replace the code in `session4/solutions/exercise-04-01.py` with this multiprocessing version:
+In the same file, replace the code with this multiprocessing version:
 
 ```python
 import multiprocessing as mp
@@ -141,11 +167,11 @@ Run again:
 python3 solutions/exercise-04-01.py
 ```
 
-Expected idea: total time is around 2 seconds in parallel mode.
+Expected idea: parallel time should usually be significantly lower than serial time (often near 2 seconds here, but exact timing varies).
 
 #### 6. Exercise
 
-This exercise focuses on CPU-heavy workload with bubble sort. Create and complete this file: `session4/solutions/exercise-04-01-part01.py`.
+This exercise focuses on CPU-heavy workload with bubble sort. Open or create this file and complete it: `session4/solutions/exercise-04-01-part01.py`.
 
 * This script compares **serial** and **parallel** execution. It generates random numbers, sorts them using bubble sort, and measures how long the work takes.
 

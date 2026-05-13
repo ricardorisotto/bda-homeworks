@@ -22,12 +22,14 @@ image_urls = [
 
 def download_and_rotate(item):
     # item is a tuple: (index, url)
+    # TODO: unpack item, then save both input/output with index-based names.
     # TODO
     ...
 
 
 def serial_runner(urls):
     start = time.perf_counter()
+    # TODO: loop over enumerate(urls, start=1) and call download_and_rotate.
     # TODO
     ...
     end = time.perf_counter()
@@ -36,6 +38,7 @@ def serial_runner(urls):
 
 def pool_runner(urls, workers=4):
     start = time.perf_counter()
+    # TODO: build items with enumerate(urls, start=1), then pool.map(...).
     # TODO
     ...
     end = time.perf_counter()

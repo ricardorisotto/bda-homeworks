@@ -16,6 +16,17 @@ You will:
 From the `session4` folder:
 
 1. Activate your virtual environment.
+
+```bash
+source .venv/bin/activate
+```
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
 2. If `requirements.txt` is missing, create it with:
 
 ```txt
@@ -30,16 +41,15 @@ quizmd
 pip install -r requirements.txt
 ```
 
-Windows PowerShell:
+Windows PowerShell (after activation):
 
 ```powershell
-.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 ```
 
 #### 3. Mini tutorial (inline): `Pool.map(...)`
 
-Copy this warm-up script into:
+Open or create this warm-up file and replace its contents with:
 
 ```txt
 session4/solutions/exercise-04-02-warmup.py
@@ -85,7 +95,7 @@ What this shows:
 
 #### 4. Exercise
 
-Create and complete this file:
+Open or create this file and complete it:
 
 ```txt
 session4/solutions/exercise-04-02.py
@@ -130,14 +140,21 @@ image_urls = [
 ]
 ```
 
+Network note:
+
+- This exercise depends on internet access (`picsum.photos`).
+- If a download fails, run the script again and compare timings only on successful runs.
+- Treat temporary network errors separately from code correctness.
+
 Complete this exercise in order:
 
-1. Create `download_and_rotate(url, idx)`:
+1. Create `download_and_rotate(item)`:
+   - `item` is a tuple: `(idx, url)`
    - download one image
    - rotate by 90 degrees
    - save with unique filename (for example `rotated_image_1.jpg`)
 2. Create `serial_runner(urls)` that processes all URLs one by one.
-3. Create `pool_runner(urls, workers=4)` using `mp.Pool(...).map(...)`.
+3. In `pool_runner(urls, workers=4)`, build items with `enumerate(urls, start=1)` and use `mp.Pool(...).map(...)`.
 4. Print serial time and pool time with `time.perf_counter()`.
 
 Suggested skeleton:
