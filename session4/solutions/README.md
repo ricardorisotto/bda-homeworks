@@ -7,5 +7,6 @@ Suggested files:
 - `exercise-04-01.py`
 - `exercise-04-01-part01.py`
 - `exercise-04-02.py`
+- `exercise-04-homework.md`
 
 This folder should contain your own files for Session 4 exercises.

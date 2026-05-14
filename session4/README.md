@@ -13,15 +13,17 @@ By the end of Session 4, you should be able to:
 
 1. [Part 1](./session-04-part-01.md)
 2. [Part 2](./session-04-part-02.md)
-3. Write your own work in [solutions](./solutions/).
-4. Review [reference solutions](./session_solutions/) only after attempting tasks yourself.
-5. Practice with [quizzes](./quizzes/) when ready.
+3. [Homework](./session-04-homework.md)
+4. Write your own work in [solutions](./solutions/).
+5. Review [reference solutions](./session_solutions/) only after attempting tasks yourself.
+6. Practice with [quizzes](./quizzes/) when ready.
 
 ### Notes
 
 - Tutorial and warm-up material is included directly inside each part markdown file.
 - Keep your own solutions in separate files inside `solutions/`.
 - Use exercise-style names in `solutions/` (for example `exercise-04-01.py`, `exercise-04-02.py`).
+- For homework, create `solutions/exercise-04-homework.md`.
 - Create your files inside `solutions/` as you work through each part.
 - Reference answers are in `session_solutions/`.
 - Use `if __name__ == "__main__":` in multiprocessing scripts.
