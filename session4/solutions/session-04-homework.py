@@ -45,7 +45,10 @@ until the sum is less than or equal to z. Continue in this fashion until one of 
     c) when proceeding from the right, the index of the array that you have reached is greater than or equal to 
     the index of the array you last reached when proceeding from the left. In that case no sum equal to z was found so return false.
 
+    The time complexity of this algorithm is O(n) where n is the length of the array, since in the worst case we have to check each element of the array once.
 
+    The space complexity of this algorithm is O(1) since we only need a constant amount of extra space to keep track of the indices and the current sum.
+    
 """
 
 def has_pair_with_sum(arr, z):
