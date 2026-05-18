@@ -95,16 +95,40 @@ def has_pair_with_sum(arr, z):
         elif current_sum < z:
             # Sum too small — advance left to try a larger value.
             # If this push makes left meet/cross right, the loop exits
-            # and we fall through to return False (your termination case b).
+            # and we fall through to return False (termination case b).
             left += 1
         else:
             # Sum too large — retreat right to try a smaller value.
             # If this pull makes right meet/cross left, the loop exits
-            # and we fall through to return False (your termination case c).
+            # and we fall through to return False (termination case c).
             right -= 1
 
     print("No pair found that sums to z.")
     return False
+
+
+
+"""
+Stelios' suggestion for an extension to the problem:
+The following function is a generator that yields all pairs of numbers in the array that sum to z.
+The logic is the same as the has_pair_with_sum function, but instead of returning True when a pair is found, it yields the pair.
+"""
+
+def find_pairs_with_sum(arr, z):
+    left = 0
+    right = len(arr) - 1
+
+    while left < right:
+        total = arr[left] + arr[right]
+
+        if total == z:
+            yield arr[left], arr[right]
+            left += 1
+            right -= 1
+        elif total < z:
+            left += 1
+        else:
+            right -= 1
 
 
 if __name__ == "__main__":
